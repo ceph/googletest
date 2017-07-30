@@ -974,6 +974,8 @@ class CapturedStream {
     char name_template[] = "/tmp/captured_stream.XXXXXX";
 #  endif  // GTEST_OS_LINUX_ANDROID
     const int captured_fd = mkstemp(name_template);
+    GTEST_CHECK_(captured_fd != -1) << "Unable to open temporary file "
+                                    << name_template;
     filename_ = name_template;
 # endif  // GTEST_OS_WINDOWS
     fflush(NULL);
